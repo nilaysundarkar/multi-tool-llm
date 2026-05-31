@@ -2,7 +2,7 @@ import base64
 
 import pytest
 
-from research_agent.tools.code_exec import code_exec_tool
+from multi_tool_llm.tools.code_exec import code_exec_tool
 
 
 def test_basic_print():

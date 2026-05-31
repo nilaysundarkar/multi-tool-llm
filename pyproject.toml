@@ -3,9 +3,9 @@ requires = ["setuptools>=68", "wheel"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "research_agent"
+name = "multi_tool_llm"
 version = "0.1.0"
-description = "Multi-tool LLM agent based research assistant"
+description = "Multi-tool LLM agent with search, calculator, and code execution"
 requires-python = ">=3.10"
 authors = [{ name = "Nilay Sundarkar" }]
 dependencies = [
@@ -21,7 +21,7 @@ dependencies = [
 dev = ["pytest>=8.0.0"]
 
 [project.scripts]
-research-agent = "research_agent.cli:main"
+multi-tool-llm = "multi_tool_llm.cli:main"
 
 [tool.setuptools.packages.find]
 where = ["src"]

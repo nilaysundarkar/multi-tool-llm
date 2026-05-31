@@ -27,7 +27,7 @@ sys.path.insert(0, str(ROOT / "src"))
 
 from dotenv import load_dotenv  # noqa: E402
 
-from research_agent.agent import Agent  # noqa: E402
+from multi_tool_llm.agent import Agent  # noqa: E402
 
 QUERIES_PATH = ROOT / "eval" / "queries.jsonl"
 

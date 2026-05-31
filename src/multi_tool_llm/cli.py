@@ -2,9 +2,9 @@
 
 Examples:
 
-    research-agent "What is the GDP of Texas divided by its population?"
-    research-agent --repl
-    research-agent --query "Plot sin(x) from 0 to 2*pi" --save-figures ./out
+    multi-tool-llm "What is the GDP of Texas divided by its population?"
+    multi-tool-llm --repl
+    multi-tool-llm --query "Plot sin(x) from 0 to 2*pi" --save-figures ./out
 """
 
 from __future__ import annotations
@@ -88,7 +88,7 @@ def _run_query(agent: Agent, query: str, console: Console,
 
 def _repl(agent: Agent, console: Console, trace_path: Path,
           save_figures: Path | None) -> None:
-    console.print("[bold]research-agent REPL[/bold] -- type 'exit' or Ctrl-D to quit")
+    console.print("[bold]multi-tool-llm REPL[/bold] -- type 'exit' or Ctrl-D to quit")
     while True:
         try:
             query = console.input("[bold cyan]>>> [/bold cyan]").strip()
@@ -109,7 +109,7 @@ def main(argv: list[str] | None = None) -> int:
     load_dotenv()
     # Build a parser for the arguments
     # Five flags: positional query, --query, --repl, --trace-file, --save-figures, --max-steps.
-    parser = argparse.ArgumentParser(prog="research-agent",
+    parser = argparse.ArgumentParser(prog="multi-tool-llm",
                                      description="Multi-tool LLM agent")
     parser.add_argument("query", nargs="?", help="Single user query to run")
     parser.add_argument("--query", dest="query_opt", help="Alternate way to pass a query")

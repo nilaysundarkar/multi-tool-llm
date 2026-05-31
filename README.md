@@ -9,25 +9,25 @@ Built with Anthropic Claude (native tool-use) and Tavily for web search. MCP int
 These steps create a fresh virtual environment and install the project. Required Python: **3.10+**.
 
 ```bash
-git clone https://github.com/nilaysundarkar/research-assistant
+git clone https://github.com/nilaysundarkar/multi-tool-llm
 
 # or unzip the project from the submitted zip
 
-cd research-assistant
+cd multi-tool-llm
 
 python3 -m venv .venv
 source .venv/bin/activate            # Windows: .venv\Scripts\activate
 
 pip install -r requirements.txt
-pip install -e .                     # REQUIRED: registers the research_agent package + `research-agent` CLI
+pip install -e .                     # REQUIRED: registers the multi_tool_llm package + `multi-tool-llm` CLI
 
 cp .env.example .env                 # only needed for live runs — fill in ANTHROPIC_API_KEY and TAVILY_API_KEY
 ```
 
 > The project uses a `src/` layout, so `pip install -e .` is mandatory.
-> Without it, `python -m research_agent.cli` fails with `ModuleNotFoundError: No module named 'research_agent'`.
+> Without it, `python -m multi_tool_llm.cli` fails with `ModuleNotFoundError: No module named 'multi_tool_llm'`.
 
-If you have `[uv](https://github.com/astral-sh/uv)` installed, you can use the faster alternative:
+If you have [uv](https://github.com/astral-sh/uv) installed, you can use the faster alternative:
 
 ```bash
 uv venv && source .venv/bin/activate
@@ -79,8 +79,8 @@ If you do have an Anthropic and Tavily key and want to run the agent live, see "
 ## Project layout
 
 ```
-research-assistant/
-├── src/research_agent/
+multi-tool-llm/
+├── src/multi_tool_llm/
 │   ├── agent.py           # multi-turn tool-use loop
 │   ├── llm.py             # Anthropic wrapper + tool schemas + system prompt
 │   ├── tracing.py         # structured trace events
@@ -106,25 +106,25 @@ research-assistant/
 ### Single query
 
 ```bash
-research-agent "What is the GDP of Texas divided by its population?"
+multi-tool-llm "What is the GDP of Texas divided by its population?"
 ```
 
 ### REPL
 
 ```bash
-research-agent --repl
+multi-tool-llm --repl
 ```
 
 ### Save matplotlib figures produced during a run
 
 ```bash
-research-agent "Plot sin(x) from 0 to 2*pi" --save-figures ./out
+multi-tool-llm "Plot sin(x) from 0 to 2*pi" --save-figures ./out
 ```
 
 ### Programmatic
 
 ```python
-from research_agent.agent import Agent
+from multi_tool_llm.agent import Agent
 
 agent = Agent()
 trace = agent.run("How many seconds are in 30 days?")
@@ -198,9 +198,9 @@ python viz/make_plots.py eval/results/<timestamp>/traces.jsonl
 
 Writes three required figures into `viz/output/`:
 
-1. `**tool_usage_bar.png**` — frequency of each tool across all queries
-2. `**tool_latency_box.png**` — latency distribution per tool (boxplot, log-scaled y)
-3. `**sample_code_plot.png**` — a representative figure produced by `code_exec_tool`, decoded from a trace
+1. **tool_usage_bar.png** — frequency of each tool across all queries
+2. **tool_latency_box.png** — latency distribution per tool (boxplot, log-scaled y)
+3. **sample_code_plot.png** — a representative figure produced by `code_exec_tool`, decoded from a trace
 
 ## Testing
 

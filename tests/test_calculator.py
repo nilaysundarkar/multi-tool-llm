@@ -2,7 +2,7 @@ import math
 
 import pytest
 
-from research_agent.tools.calculator import calculator_tool
+from multi_tool_llm.tools.calculator import calculator_tool
 
 
 @pytest.mark.parametrize(

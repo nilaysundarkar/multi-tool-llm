@@ -2,8 +2,8 @@
 
 from __future__ import annotations
 
-from research_agent.agent import Agent
-from research_agent.llm import LLMResponse
+from multi_tool_llm.agent import Agent
+from multi_tool_llm.llm import LLMResponse
 
 
 class ScriptedLLM:
